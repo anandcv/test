@@ -1,0 +1,26 @@
+
+			@Override
+			public void onData()
+			{
+		
+			   double macd1 = talib_data("macd1", "macdhist");
+			   logger.debug("macd1 = " + macd1);
+			   if(macd1>0)
+			   {
+		
+				   order("EUR.USD", 10);
+			   }
+			   else
+				   order("EUR.USD", -10);
+		
+			}
+		
+		   @Override	
+			public void initialize()
+			{
+		
+				 talib_init("macd1","macd", "12", "26","9", "EU0009652759", "close" );
+		
+		
+			}
+			
