@@ -1,4 +1,3 @@
-sfs
 import java.math.BigDecimal;
 import com.breezetrader.Context;
 import com.breezetrader.Event;
