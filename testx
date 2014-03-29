@@ -10,7 +10,7 @@ import com.breezetrader.Tick;
 *  http://docs.breezetrader.com
 *
 */
-public class max extends Strategy {
+public class testx extends Strategy {
 	
 	boolean flag = false;
 	String symbol = "EUR.USD";
