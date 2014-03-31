@@ -24,7 +24,7 @@ public class Max extends Strategy {
 			talib_init("rsi","rsi1", "12", "EU0009652759", "currentValueDouble" );
 			context.setDataFrequency(2, Context.Frequency.WEEK);
 			context.setSymbols("EU0009652759");
-			context.setDataURL("http://localhost/landing/EU0009652759.csv");
+			context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
 			context.setPortfolioValue(BigDecimal.valueOf(100000));
 			context.setDataType(Event.Type.BAR);
 			context.setStartDate("03-9-2012");
