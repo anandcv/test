@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+
 import com.breezetrader.Context;
 import com.breezetrader.Event;
 import com.breezetrader.OrderType;
@@ -22,7 +23,7 @@ public class Max extends Strategy {
 	{	
 			talib_init("macd","macd1", "12", "26","9", "EU0009652759", "currentValueDouble" );
 			talib_init("rsi","rsi1", "12", "EU0009652759", "currentValueDouble" );
-			context.setDataFrequency(2, Context.Frequency.WEEK);
+			context.setDataFrequency(1, Context.Frequency.MINUTE);
 			context.setSymbols("EU0009652759");
 			context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
 			context.setPortfolioValue(BigDecimal.valueOf(100000));
