@@ -67,8 +67,11 @@ public class emacrossover extends Strategy {
                 }
                 else if(ma3<ma5 && lma3>= lma5)
                 {
-                        log("openpositions: "+getPosition(symbol));
+                    log("openpositions: "+getPosition(symbol));
+                    if(getPosition(symbol) > 0){
                         closeAllPositions(symbol);
+                    }
+                    log("ID: "+order(OrderType.Market,symbol, -10));
 
                 }
 
