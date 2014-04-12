@@ -61,7 +61,7 @@ public class emacrossover extends Strategy {
                     if(getPosition(symbol) > 0){
                         closeAllPositions(symbol);
                     }
-                    log("ID: "+order(OrderType.Market,symbol, 10));
+                    log("ID: "+order(OrderType.Market,symbol, 5000));
 
                         
                 }
@@ -71,7 +71,7 @@ public class emacrossover extends Strategy {
                     if(getPosition(symbol) > 0){
                         closeAllPositions(symbol);
                     }
-                    log("ID: "+order(OrderType.Market,symbol, -10));
+                    log("ID: "+order(OrderType.Market,symbol, -5000));
 
                 }
 
