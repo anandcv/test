@@ -1,0 +1,72 @@
+import com.breezetrader.Context;
+import com.breezetrader.Event;
+import com.breezetrader.OrderType;
+import com.breezetrader.Strategy;
+import com.breezetrader.Tick;
+/*
+*  This is a sample strategy intended to get you started.
+*  For more details on the APIs and usage please visit
+*  http://docs.breezetrader.com
+*
+*/
+public class emacrossover extends Strategy {
+
+        boolean flag = false;
+        String symbol = "EUR.USD";
+        double ma3, ma5, lma5, lma3;
+        /*
+        *  initialize your context,
+        *  technical indicators other variables
+        */
+        public void initialize(Context context)
+        {
+                        talib_init("ma", "ma3", "EMA", "3", "EU0009652759", "currentValueDouble" );
+                        talib_init("ma", "ma5", "EMA", "5", "EU0009652759", "currentValueDouble" );
+           // talib_init("lookback", "lma5",  "5", "ma5");
+           // talib_init("lookback", "lma3",  "5", "ma3");
+                        context.setDataFrequency(1, Context.Frequency.DAY);
+                        context.setSymbols("EU0009652759");
+                        context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
+                        context.setPortfolioValue(BigDecimal.valueOf(100000));
+                        context.setDataType(Event.Type.BAR);
+                        context.setStartDate("03-9-2012");
+                        context.setEndDate("31-10-2012");
+                        log("Initialized");
+                        lma3 =0;
+                        lma5 =0;
+                        ma3 = 0;
+                        ma5 = 0;
+
+        }
+
+        /*
+        *  onEvent is the callback when a market event happens.
+        *  The behaviour of how this is called depends on the context
+        *  object you intialized in intialize(Context context)
+        */
+
+        public void onEvent(Object object)
+        {
+                lma5=ma5;
+                lma3=ma3;
+                ma3 = talib_data("ma3");
+                ma5 = talib_data("ma5");
+
+
+
+                if(lma3>lma5 && ma3<= ma5)
+                {
+                        log("ID: "+order(OrderType.Market,symbol, 10));
+
+                        log("openpositions: "+getPosition(symbol));
+                }
+                else if(lma3<lma5 && ma3>= ma5)
+                {
+                        log("openpositions: "+getPosition(symbol));
+                        closeAllPositions(symbol);
+
+                }
+
+        }
+
+}
