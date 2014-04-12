@@ -3,6 +3,7 @@ import com.breezetrader.Event;
 import com.breezetrader.OrderType;
 import com.breezetrader.Strategy;
 import com.breezetrader.Tick;
+import java.math.BigDecimal;
 /*
 *  This is a sample strategy intended to get you started.
 *  For more details on the APIs and usage please visit
@@ -20,10 +21,10 @@ public class emacrossover extends Strategy {
         */
         public void initialize(Context context)
         {
-                        talib_init("ma", "ma3", "EMA", "3", "EU0009652759", "currentValueDouble" );
-                        talib_init("ma", "ma5", "EMA", "5", "EU0009652759", "currentValueDouble" );
-           // talib_init("lookback", "lma5",  "5", "ma5");
-           // talib_init("lookback", "lma3",  "5", "ma3");
+                        talib_init("ma", "ma3", "3","Ema", "EU0009652759", "close" );
+                        talib_init("ma", "ma5", "5","Ema", "EU0009652759", "close" );
+                      //  talib_init("lookback", "lma5",  "5", "ma5");
+                       // talib_init("lookback", "lma3",  "5", "ma3");
                         context.setDataFrequency(1, Context.Frequency.DAY);
                         context.setSymbols("EU0009652759");
                         context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
@@ -47,20 +48,24 @@ public class emacrossover extends Strategy {
 
         public void onEvent(Object object)
         {
-                lma5=ma5;
-                lma3=ma3;
+                lma5= ma5;// talib_data("lma5");
+                lma3= ma3;//talib_data("lma3");
                 ma3 = talib_data("ma3");
                 ma5 = talib_data("ma5");
 
 
 
-                if(lma3>lma5 && ma3<= ma5)
+                if(ma3>ma5 && lma3<= lma5)
                 {
-                        log("ID: "+order(OrderType.Market,symbol, 10));
+                    log("openpositions: "+getPosition(symbol));
+                    if(getPosition(symbol) > 0){
+                        closeAllPositions(symbol);
+                    }
+                    log("ID: "+order(OrderType.Market,symbol, 10));
 
-                        log("openpositions: "+getPosition(symbol));
+                        
                 }
-                else if(lma3<lma5 && ma3>= ma5)
+                else if(ma3<ma5 && lma3>= lma5)
                 {
                         log("openpositions: "+getPosition(symbol));
                         closeAllPositions(symbol);
