@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class emacrossover extends Strategy {
 
         boolean flag = false;
-        String symbol = "EUR.USD";
+        String symbol = "20MICRONS";
         double ma3, ma5, lma5, lma3;
         /*
         *  initialize your context,
@@ -21,17 +21,17 @@ public class emacrossover extends Strategy {
         */
         public void initialize(Context context)
         {
-                        talib_init("ma", "ma3", "3","Ema", "EU0009652759", "close" );
-                        talib_init("ma", "ma5", "5","Ema", "EU0009652759", "close" );
+                        talib_init("ma", "ma3", "3","Ema", "20MICRONS", "close" );
+                        talib_init("ma", "ma5", "5","Ema", "20MICRONS", "close" );
                       //  talib_init("lookback", "lma5",  "5", "ma5");
                        // talib_init("lookback", "lma3",  "5", "ma3");
                         context.setDataFrequency(1, Context.Frequency.DAY);
-                        context.setSymbols("EU0009652759");
-                        context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
-                        context.setPortfolioValue(BigDecimal.valueOf(100000));
+                        context.setSymbols("20MICRONS");
+                        //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
+                        context.setPortfolioValue(BigDecimal.valueOf(150000));
                         context.setDataType(Event.Type.BAR);
-                        context.setStartDate("03-9-2012");
-                        context.setEndDate("31-10-2012");
+                        context.setStartDate("01-1-2011");
+                        context.setEndDate("31-12-2013");
                         log("Initialized");
                         lma3 =0;
                         lma5 =0;
@@ -61,7 +61,7 @@ public class emacrossover extends Strategy {
                     if(getPosition(symbol) > 0){
                         closeAllPositions(symbol);
                     }
-                    log("ID: "+order(OrderType.Market,symbol, 50000));
+                    log("ID: "+order(OrderType.Market,symbol, 500));
 
                         
                 }
@@ -71,7 +71,7 @@ public class emacrossover extends Strategy {
                     if(getPosition(symbol) > 0){
                         closeAllPositions(symbol);
                     }
-                    log("ID: "+order(OrderType.Market,symbol, -50000));
+                    log("ID: "+order(OrderType.Market,symbol, -500));
 
                 }
 
