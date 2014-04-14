@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class emacrossover extends Strategy {
 
         boolean flag = false;
-        String symbol = "20MICRONS";
+        String symbol = "INFY";
         double ma3, ma5, lma5, lma3;
         /*
         *  initialize your context,
@@ -21,12 +21,12 @@ public class emacrossover extends Strategy {
         */
         public void initialize(Context context)
         {
-                        talib_init("ma", "ma3", "3","Ema", "20MICRONS", "close" );
-                        talib_init("ma", "ma5", "5","Ema", "20MICRONS", "close" );
+                        talib_init("ma", "ma3", "3","Ema",symbol, "close" );
+                        talib_init("ma", "ma5", "5","Ema", symbol, "close" );
                       //  talib_init("lookback", "lma5",  "5", "ma5");
                        // talib_init("lookback", "lma3",  "5", "ma3");
                         context.setDataFrequency(1, Context.Frequency.DAY);
-                        context.setSymbols("20MICRONS");
+                        context.setSymbols(symbol);
                         //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
                         context.setPortfolioValue(BigDecimal.valueOf(150000));
                         context.setDataType(Event.Type.BAR);
