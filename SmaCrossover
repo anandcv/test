@@ -54,29 +54,35 @@ public class SmaCrossover extends Strategy {
 
         {
             lsma10 = sma10;
-            lsma20 - sma20;
-            
+            lsma20 = sma20;
+
             sma10 = talib_data("sma10");
             sma20 = talib_data("sma20");
 
+
             //Open Position
             if(sma10>sma20 && lsma10 <= lsma20)
+
             {
                 if(getPosition(symbol) == 0){
+
                     order(OrderType.Market,symbol, 200);
                 }
-
             }
             
             //Close Position
+
             if(object instanceof Bar){
                 Bar data = (Bar) object;
                 
-                if(data.getClose() < sma20){
+
+                if(data.getCurrentValue() < sma20){
                     closeAllPositions(symbol);
+
                 }
             }
 
         }
+
+
 }
-	
