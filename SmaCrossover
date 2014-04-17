@@ -27,8 +27,8 @@ public class SmaCrossover extends Strategy {
         public void initialize(Context context)
         {
 
-            talib_init("ma", "sma10", "10","Sma", symbol, "close" );
-            talib_init("ma", "sma20", "20","Sma", symbol, "close" );
+            initTALib("ma", "sma10", "10","Sma", symbol, "close" );
+            initTALib("ma", "sma20", "20","Sma", symbol, "close" );
             
             context.setDataFrequency(1, Context.Frequency.DAY);
             context.setSymbols(symbol);
@@ -56,8 +56,8 @@ public class SmaCrossover extends Strategy {
             lsma10 = sma10;
             lsma20 = sma20;
 
-            sma10 = talib_data("sma10");
-            sma20 = talib_data("sma20");
+            sma10 = getData("sma10");
+            sma20 = getData("sma20");
 
 
             //Open Position
