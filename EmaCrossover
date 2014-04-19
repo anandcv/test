@@ -59,7 +59,7 @@ public class EmaCrossover extends Strategy {
 
         {
                 lma5= getData("lma5");
-                lma3= talib_data("lma3");
+                lma3= getData("lma3");
 
                 ma3 = getData("ma3");
                 ma5 = getData("ma5");
