@@ -26,31 +26,23 @@ public class EmaCrossover extends Strategy {
         */
         public void initialize(Context context)
         {
+            lma3=lma5=ma3=ma5 = 0;
 
-                        talib_init("ma", "ma3", "3","Ema", symbol, "close" );
-                        talib_init("ma", "ma5", "5","Ema", symbol, "close" );
-
-                      //  talib_init("lookback", "lma5",  "5", "ma5");
-
-                       // talib_init("lookback", "lma3",  "5", "ma3");
-                        context.setDataFrequency(1, Context.Frequency.DAY);
-
-                        context.setSymbols(symbol);
-                        //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
-
-                        context.setPortfolioValue(BigDecimal.valueOf(150000));
-                        context.setDataType(Event.Type.BAR);
-
-                        context.setStartDate("01-01-2011");
-                        context.setEndDate("31-12-2013");
-
-                        log("Initialized");
-                        lma3 =0;
-
-                        lma5 =0;
-                        ma3 = 0;
-
-                        ma5 = 0;
+            initTALib("ma", "ma3", "3","Ema", symbol, "close" );
+            initTALib("ma", "ma5", "5","Ema", symbol, "close" );
+            initTALib("lookback", "lma5",  "5", "ma5");
+            initTALib("lookback", "lma3",  "5", "ma3");
+            context.setDataFrequency(1, Context.Frequency.DAY);
+            context.setSymbols(symbol);
+            //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
+            
+            context.setPortfolioValue(BigDecimal.valueOf(150000));
+            context.setDataType(Event.Type.BAR);
+            
+            context.setStartDate("01-01-2011");
+            context.setEndDate("31-12-2013");
+            
+            log("Initialized");
 
         }
 
@@ -66,11 +58,11 @@ public class EmaCrossover extends Strategy {
         public void onEvent(Object object)
 
         {
-                lma5= ma5;// talib_data("lma5");
-                lma3= ma3;//talib_data("lma3");
+                lma5= getData("lma5");
+                lma3= talib_data("lma3");
 
-                ma3 = talib_data("ma3");
-                ma5 = talib_data("ma5");
+                ma3 = getData("ma3");
+                ma5 = getData("ma5");
 
 
 
