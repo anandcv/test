@@ -30,8 +30,8 @@ public class EmaCrossover extends Strategy {
 
             initTALib("ma", "ma3", "3","Ema", symbol, "close" );
             initTALib("ma", "ma5", "5","Ema", symbol, "close" );
-            initTALib("lookback", "lma5",  "5", "ma5");
-            initTALib("lookback", "lma3",  "5", "ma3");
+            initTALib("lookback", "lma5", "ma5", "5");
+            initTALib("lookback", "lma3", "ma3", "3");
             context.setDataFrequency(1, Context.Frequency.DAY);
             context.setSymbols(symbol);
             //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
