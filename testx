@@ -20,8 +20,8 @@ public class testx extends Strategy {
 	*/
 	public void initialize(Context context)
 	{	
-			talib_init("macd","macd1", "12", "26","9", "EU0009652759", "currentValueDouble" );
-			talib_init("rsi","rsi1", "12", "EU0009652759", "currentValueDouble" );
+		    initTALib("macd","macd1", "12", "26","9", "EU0009652759", "currentValueDouble" );
+			initTALib("rsi","rsi1", "12", "EU0009652759", "currentValueDouble" );
 			context.setDataFrequency(2, Context.Frequency.WEEK);
 			context.setSymbols("EU0009652759");
 			context.setDataURL("http://localhost/landing/EU0009652759.csv");
@@ -41,9 +41,9 @@ public class testx extends Strategy {
 	
 	public void onEvent(Object object)
 	{
-		double macd1 = talib_data("macd1" , "macd");
-		double macd1Hist = talib_data("macd1" , "macdhist");
-		double rsi1 = talib_data("rsi1");
+		double macd1 = getData("macd1" , "macd");
+		double macd1Hist = getData("macd1" , "macdhist");
+		double rsi1 = getData("rsi1");
 //		log("macd1: "+macd1);
 //		log("macd1hist: "+macd1Hist);
 //		log("macd1sig: "+macd1Sig);
