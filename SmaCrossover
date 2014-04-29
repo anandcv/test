@@ -27,6 +27,7 @@ public class SmaCrossover extends Strategy {
         public void initialize(Context context)
         {
 
+            
             initTALib("ma", "sma10", "10","Sma", symbol, "close" );
             initTALib("ma", "sma20", "20","Sma", symbol, "close" );
             
@@ -65,7 +66,7 @@ public class SmaCrossover extends Strategy {
 
             {
                 if(getPosition(symbol) == 0){
-
+                    log("ordering");
                     order(OrderType.Market,symbol, 200);
                 }
             }
