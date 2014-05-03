@@ -28,24 +28,23 @@ public class TaLibTest extends Strategy {
         public void initialize(Context context)
         {
 
-            initTALib("ma","ma1", "12", "Sma" ,isin, "currentValueDouble" );
-			initTALib("macd","macd1", "12", "26","9", isin, "currentValueDouble" );
-			initTALib("rsi","rsi1", "12", isin, "currentValueDouble" );
-			initTALib("bollinger", "bband1",  "20", "2", isin,  "close");
-			initTALib("lookback", "lbmacd1",  "macd1", "2",  "macdhist");
-			initTALib("lookback", "lbrsi1",  "rsi1", "2");
-			initTALib("lookback", "lbisin", isin, "2", "close");
-			initTALib("stochF", "stochF1", "14","2", isin, "close");
-			initTALib("stoch", "stoch1", "14","2","2", isin, "close");
-			initTALib("vwap", "vwap1", isin); 
-			initTALib("adx","adx1", "5", isin );
-			initTALib("atr","atr1", "5", isin );
-			initTALib("cci","cci1", "5", isin );
-			initTALib("sar","sar1", "0.02", "0.2", isin );
+            initTALib("ma","ma1", "12", "Sma" ,isin, "currentValueDouble" ); //initailize moving avaerage
+			initTALib("macd","macd1", "12", "26","9", isin, "currentValueDouble" );//initialize macd
+			initTALib("rsi","rsi1", "12", isin, "currentValueDouble" );//initialize rsi
+			initTALib("bollinger", "bband1",  "20", "2", isin,  "close"); //initialize bollinger
+			initTALib("lookback", "lbmacd1",  "macd1", "2",  "macdhist");// initialize lookback for a macdhist of macd1 variable
+			initTALib("lookback", "lbrsi1",  "rsi1", "2");// initialize lookback for rsi1 variable
+			initTALib("lookback", "lbisin", isin, "2", "close");//lookback a security's close value
+			initTALib("stochF", "stochF1", "14","2", isin, "close");//initialize Fast Stochastic oscillator
+			initTALib("stoch", "stoch1", "14","2","2", isin, "close");//initialize Full Stochastic Oscillator
+			initTALib("vwap", "vwap1", isin); //initialize vwap of a security
+			initTALib("adx","adx1", "5", isin );//initialize adx
+			initTALib("atr","atr1", "5", isin );//initialize atr
+			initTALib("cci","cci1", "5", isin );//initialize cci
+			initTALib("sar","sar1", "0.02", "0.2", isin );//initialize parabolic sar
             context.setDataFrequency(1, Context.Frequency.DAY);
             context.setSymbols(isin);
-            //context.setDataURL("http://localhost/landing/EU0009652759.csv");
-
+            
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
 
@@ -73,25 +72,27 @@ public class TaLibTest extends Strategy {
 			//log("StreamName: "+stream);
 			//log("Bar : "+ bar.open +", "+ bar.high+ ", "+ bar.low + ", "+ bar.close +", "+ bar.volume + ", "+ bar.dateTime);
 		}
-		double ma1 =  getData("ma1" );
-		double macd1 =  getData("macd1" , "macd");
-		double macd1Hist = getData("macd1" , "macdhist");
-		double bband1u = getData("bband1", "realupperband");
-		double bband1m = getData("bband1", "realmiddleband");
-		double bband1l = getData("bband1", "reallowerband");
-		double rsi1 = getData("rsi1");
-		double lbrsi1 = getData("lbrsi1");
-		double vwap1 =getData("vwap1");
-		double lbmacd1 =getData("lbmacd1");
-		double lbisin= getData("lbisin");
-		double stochF1K = getData("stochF1", "fastk");
-		double stochF1D = getData("stochF1", "fastd");
-		double stoch1K = getData("stoch1", "slowk");
-		double stoch1D = getData("stoch1", "slowd");
-		double adx1 = getData("adx1");
-		double atr1 = getData("atr1");
-		double cci1 = getData("cci1");
-		double sar1 = getData("sar1");
+		double ma1 =  getData("ma1" );//read data of movingaverage variable
+		double macd1 =  getData("macd1" , "macd");//read data of macd variable for macd component
+		double macd1Hist = getData("macd1" , "macdhist");//read data of macd for macdhist component
+		double bband1u = getData("bband1", "realupperband");//read data of bollinger upperband
+		double bband1m = getData("bband1", "realmiddleband");//read data bollinger middleband
+		double bband1l = getData("bband1", "reallowerband");//read data bollinger lowerband
+		double rsi1 = getData("rsi1");//read data of rsi variable 
+		double lbrsi1 = getData("lbrsi1");//read data of lookback rsi variable
+		double vwap1 =getData("vwap1");//read data vwap variable
+		double lbmacd1 =getData("lbmacd1");//read data lookback of macd
+		double lbisin= getData("lbisin");//read data of lookback of security
+		double stochF1K = getData("stochF1", "fastk");//read data of stochstic fast oscillator fastk value
+		double stochF1D = getData("stochF1", "fastd");//read data of stochstic fast oscillator fastd value
+		double stoch1K = getData("stoch1", "slowk");//read data of stochstic full oscillator slowk value
+		double stoch1D = getData("stoch1", "slowd");//read data of stochstic full oscillator slowd value
+		double adx1 = getData("adx1");//read data of adx variable
+		double atr1 = getData("atr1");//read data of  atr variable
+		double cci1 = getData("cci1");//read data of cci variable
+		double sar1 = getData("sar1");//read data of probabilstic SAR variables
+		
+		//Log values for reference
 		log("test*****************************************************************");
 		log("ma1 = " +adx1);
 		log("macd1= "+macd1Hist);
