@@ -21,10 +21,10 @@ public class emacrossover extends Strategy {
         */
         public void initialize(Context context)
         {
-                        talib_init("ma", "ma3", "3","Ema",symbol, "close" );
-                        talib_init("ma", "ma5", "5","Ema", symbol, "close" );
-                      //  talib_init("lookback", "lma5",  "5", "ma5");
-                       // talib_init("lookback", "lma3",  "5", "ma3");
+                        initTALib("ma", "ma3", "3","Ema",symbol, "close" );
+                        initTALib("ma", "ma5", "5","Ema", symbol, "close" );
+                      //  initTALib("lookback", "lma5",  "5", "ma5");
+                       // initTALib("lookback", "lma3",  "5", "ma3");
                         context.setDataFrequency(1, Context.Frequency.DAY);
                         context.setSymbols(symbol);
                         //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
@@ -48,10 +48,10 @@ public class emacrossover extends Strategy {
 
         public void onEvent(Object object)
         {
-                lma5= ma5;// talib_data("lma5");
-                lma3= ma3;//talib_data("lma3");
-                ma3 = talib_data("ma3");
-                ma5 = talib_data("ma5");
+                lma5= ma5;// getData("lma5");
+                lma3= ma3;//getData("lma3");
+                ma3 = getData("ma3");
+                ma5 = getData("ma5");
 
 
 
