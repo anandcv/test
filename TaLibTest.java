@@ -11,13 +11,13 @@ import com.breezetrader.Bar;
 *  http://docs.breezetrader.com
 *
 */
-public class SmaCrossover extends Strategy {
+public class TaLibTest extends Strategy {
 
 
         boolean flag = false;
 
-        String symbol = "EUR.USD";
-	    String isin = "EU0009652759";
+        String symbol = "NIFTYBEES";
+	    String isin = "NIFTYBEES";
         double sma10, sma20, lsma10, lsma20;
         /*
 
@@ -44,7 +44,7 @@ public class SmaCrossover extends Strategy {
 			initTALib("sar","sar1", "0.02", "0.2", isin );
             context.setDataFrequency(1, Context.Frequency.DAY);
             context.setSymbols(isin);
-            context.setDataURL("http://localhost/landing/EU0009652759.csv");
+            //context.setDataURL("http://localhost/landing/EU0009652759.csv");
 
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
