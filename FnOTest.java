@@ -61,7 +61,7 @@ public class FnOTest extends Strategy {
 			
 			
 			context.createDataStream("minute", 1, Context.Frequency.MINUTE);
-			context.createDataStream("hourly", 1, Context.Frequency.MINUTE);
+			context.createDataStream("hourly", 1, Context.Frequency.HOUR);
 			context.createDataStream("daily", 1, Context.Frequency.DAY);
 			context.createDataStream("weekly", 1, Context.Frequency.WEEK);
 			
