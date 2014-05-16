@@ -5,9 +5,9 @@ import com.breezetrader.OrderType;
 import com.breezetrader.Strategy;
 import com.breezetrader.*;
 
-public class MyStrategy extends Strategy {
+public class FnOTest extends Strategy {
 	
-	String symbol = "NIFTY13AUGFUT";
+	String symbol = "NIFTY-CURRENT";
 	double macd1, lookbackIsin;
 	public void onEvent(Object object)
 	{
