@@ -16,8 +16,8 @@ public class TaLibTest2 extends Strategy {
 
         boolean flag = false;
 
-        String symbol = "NIFTYBEES";
-	    String isin = "NIFTYBEES";
+        String symbol = "NIFTY-CURRENT";
+	    String isin = "NIFTY-CURRENT";
         double sma10, sma20, lsma10, lsma20;
         /*
 
@@ -42,14 +42,14 @@ public class TaLibTest2 extends Strategy {
 			initTALib("atr","atr1", "5", isin );//initialize atr
 			initTALib("cci","cci1", "5", isin );//initialize cci
 			initTALib("sar","sar1", "0.02", "0.2", isin );//initialize parabolic sar
-            context.setDataFrequency(1, Context.Frequency.DAY);
+            context.setDataFrequency(1, Context.Frequency.MINUTE);
             context.setSymbols(isin);
             
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
 
-            context.setStartDate("01-01-2011");
-            context.setEndDate("31-12-2013");
+            context.setStartDate("02-02-2012");
+            context.setEndDate("31-03-2012");
 
         }
 
