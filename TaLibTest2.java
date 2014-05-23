@@ -49,7 +49,7 @@ public class TaLibTest2 extends Strategy {
             context.setDataType(Event.Type.BAR);
 
             context.setStartDate("02-02-2012");
-            context.setEndDate("31-03-2012");
+            context.setEndDate("03-03-2012");
 
         }
 
