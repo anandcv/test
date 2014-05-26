@@ -103,7 +103,7 @@ public class TaLibTest2 extends Strategy {
         		log("bband1m =" + bband1m);
         		log("bband1l =" + bband1l);
         		log("lookback macd1= "+ lbmacd1);
-        		log("lbrsi1 = "+lbrsi1);*/
+        		log("lbrsi1 = "+lbrsi1);
         		log("lbisin = "+lbisin);
         		log("stochF1K = "+stochF1K);
         		log("stochF1D = "+stochF1D);
