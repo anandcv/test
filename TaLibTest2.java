@@ -44,12 +44,12 @@ public class TaLibTest2 extends Strategy {
 			initTALib("sar","sar1", "0.02", "0.2", isin  ,"1hour");//initialize parabolic sar
             context.setDataFrequency(1, Context.Frequency.MINUTE);
             context.setSymbols(isin);
-            
+            context.createDataStream("1hour", 1, Context.Frequency.HOUR);
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
 
-            context.setStartDate("02-02-2012");
-            context.setEndDate("05-02-2012");
+            context.setStartDate("01-02-2012");
+            context.setEndDate("21-02-2012");
 
         }
 
@@ -71,8 +71,9 @@ public class TaLibTest2 extends Strategy {
 			String stream = bar.streamName;
 			//log("StreamName: "+stream);
 			//log("Bar : "+ bar.open +", "+ bar.high+ ", "+ bar.low + ", "+ bar.close +", "+ bar.volume + ", "+ bar.dateTime);
-    		if(stream.equals("1hour")
+    		if(stream.equals("1hour"))
     		{
+    		    log("Bar : "+ bar.close);
         		double ma1 =  getData("ma1" );//read data of movingaverage variable
         		double macd1 =  getData("macd1" , "macd");//read data of macd variable for macd component
         		double macd1Hist = getData("macd1" , "macdhist");//read data of macd for macdhist component
@@ -102,7 +103,7 @@ public class TaLibTest2 extends Strategy {
         		log("bband1m =" + bband1m);
         		log("bband1l =" + bband1l);
         		log("lookback macd1= "+ lbmacd1);
-        		log("lbrsi1 = "+lbrsi1);
+        		log("lbrsi1 = "+lbrsi1);*/
         		log("lbisin = "+lbisin);
         		log("stochF1K = "+stochF1K);
         		log("stochF1D = "+stochF1D);
