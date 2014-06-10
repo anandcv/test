@@ -8,7 +8,7 @@ import com.breezetrader.Strategy;
 import com.breezetrader.Tick;
 import com.breezetrader.*;
 
-public class MyStrategy extends Strategy {
+public class TaLibTest extends Strategy {
 	
 	String symbol = "NIFTY-CURRENT";
 	String isin = "NIFTY-CURRENT";
