@@ -1,78 +1,35 @@
+
 import java.math.BigDecimal;
 
 import com.breezetrader.Context;
 import com.breezetrader.Event;
 import com.breezetrader.OrderType;
 import com.breezetrader.Strategy;
-import com.breezetrader.Bar;
-/*
-*  This is a sample strategy intended to get you started.
-*  For more details on the APIs and usage please visit 
-*  http://docs.breezetrader.com
-*
-*/
-public class TaLibTest extends Strategy {
+import com.breezetrader.Tick;
+import com.breezetrader.*;
 
-
-        boolean flag = false;
-
-        String symbol = "NIFTYBEES";
-	    String isin = "NIFTYBEES";
-        double sma10, sma20, lsma10, lsma20;
-        /*
-
-        *  initialize your context,
-        *  technical indicators other variables
-
-        */
-        public void initialize(Context context)
-        {
-
-            initTALib("ma","ma1", "12", "Sma" ,isin, "currentValueDouble" );
-			initTALib("macd","macd1", "12", "26","9", isin, "currentValueDouble" );
-			initTALib("rsi","rsi1", "12", isin, "currentValueDouble" );
-			initTALib("bollinger", "bband1",  "20", "2", isin,  "close");
-			initTALib("lookback", "lbmacd1",  "macd1", "2",  "macdhist");
-			initTALib("lookback", "lbrsi1",  "rsi1", "2");
-			initTALib("lookback", "lbisin", isin, "2", "close");
-			initTALib("stochF", "stochF1", "14","2", isin, "close");
-			initTALib("stoch", "stoch1", "14","2","2", isin, "close");
-			initTALib("vwap", "vwap1", isin); 
-			initTALib("adx","adx1", "5", isin );
-			initTALib("atr","atr1", "5", isin );
-			initTALib("cci","cci1", "5", isin );
-			initTALib("sar","sar1", "0.02", "0.2", isin );
-            context.setDataFrequency(1, Context.Frequency.DAY);
-            context.setSymbols(isin);
-            //context.setDataURL("http://localhost/landing/EU0009652759.csv");
-
-            context.setPortfolioValue(BigDecimal.valueOf(150000));
-            context.setDataType(Event.Type.BAR);
-
-            context.setStartDate("03-09-2012");
-			context.setEndDate("22-11-2012");
-
-        }
-
-
-        /*
-        *  onEvent is the callback when a market event happens.
-
-        *  The behaviour of how this is called depends on the context
-        *  object you intialized in intialize(Context context)
-
-        */
-
-        public void onEvent(Object object)
-
-        {
+public class MyStrategy extends Strategy {
+	
+	String symbol = "NIFTY-CURRENT";
+	String isin = "NIFTY-CURRENT";
+	//String symbol = "20MICRONS";
+	//String isin = "20MICRONS";
+	//String symbol = "GOOG";
+	//String isin = "US38259P5089";
+	long time;
+	String stream;
+	public void onEvent(Object object)
+	{
 		if(object instanceof Bar)
 		{
 			Bar bar = ((Bar)object);
-			String stream = bar.streamName;
-			//log("StreamName: "+stream);
-			//log("Bar : "+ bar.open +", "+ bar.high+ ", "+ bar.low + ", "+ bar.close +", "+ bar.volume + ", "+ bar.dateTime);
-		}
+			stream = bar.streamName;
+			
+			if(stream.equals("1hour")){
+				//log("StreamName: "+stream);
+				//log("Bar : "+ bar.open +", "+ bar.high+ ", "+ bar.low + ", "+ bar.close +", "+ bar.volume + ", "+ bar.dateTime);
+				
+			log("Bar : "+ bar.close);
 		double ma1 =  getData("ma1" );
 		double macd1 =  getData("macd1" , "macd");
 		double macd1Hist = getData("macd1" , "macdhist");
@@ -102,6 +59,7 @@ public class TaLibTest extends Strategy {
 		log("lookback macd1= "+ lbmacd1);
 		log("lbrsi1 = "+lbrsi1);
 		log("lbisin = "+lbisin);
+		
 		log("stochF1K = "+stochF1K);
 		log("stochF1D = "+stochF1D);
 		log("stoch1K = "+stoch1K);
@@ -111,7 +69,42 @@ public class TaLibTest extends Strategy {
 		log("atr1 = " +atr1);
 		log("cci1 = " +cci1);
 		log("sar1 = " +sar1);
-        }
-
-
+			}
+		}
+	} 
+	public void initialize(Context context)
+	{	
+			initTALib("ma","ma1", "12", "Sma" ,isin, "close","1hour");
+			initTALib("macd","macd1", "12", "26","9", isin, "close","1hour" );
+			initTALib("rsi","rsi1", "12", isin, "close","1hour" );
+			initTALib("bollinger", "bband1",  "20", "2", isin,  "close","1hour");
+			initTALib("lookback", "lbmacd1",  "macd1", "2",  "macdhist");
+			initTALib("lookback", "lbrsi1",  "rsi1", "2");
+			initTALib("lookback", "lbisin", isin, "5", "close","1hour");
+			initTALib("stochF", "stochF1", "5","2", isin, "close","1hour");
+			initTALib("stoch", "stoch1", "5","2","2", isin, "close","1hour");
+			initTALib("vwap", "vwap1", isin,"1hour"); 
+			initTALib("adx","adx1", "5", isin,"1hour" );
+			initTALib("atr","atr1", "5", isin,"1hour");
+			initTALib("cci","cci1", "5", isin ,"1hour");
+			initTALib("sar","sar1", "0.02", "0.2", isin ,"1hour");
+			context.setSymbols(symbol);
+			context.setDataFrequency(1, Context.Frequency.MINUTE);
+			//context.setDataURL("http://localhost/landing/EU0009652759.csv");
+			context.setPortfolioValue(BigDecimal.valueOf(100000));
+			context.setDataType(Event.Type.BAR);
+			//context.setDataType(Event.Type.TICK);
+			context.setStartDate("24-07-2013");
+			context.setEndDate("31-07-2013");
+			
+			
+			context.createDataStream("1hour", 1, Context.Frequency.HOUR);
+			//context.createDataStream("3hour", 3, Context.Frequency.HOUR);
+			//context.createDataStream("5hour", 5, Context.Frequency.HOUR);
+			//context.createDataStream("day", 4, Context.Frequency.DAY);
+			log("Init impl");
+			time = getTimeInMillis();
+			
+			
+	}
 }
