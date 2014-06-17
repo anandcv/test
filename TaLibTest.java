@@ -94,8 +94,8 @@ public class TaLibTest extends Strategy {
 			context.setPortfolioValue(BigDecimal.valueOf(100000));
 			context.setDataType(Event.Type.BAR);
 			//context.setDataType(Event.Type.TICK);
-			context.setStartDate("24-07-2013");
-			context.setEndDate("31-07-2013");
+			context.setStartDate("01-01-2013");
+			context.setEndDate("31-01-2013");
 			
 			
 			context.createDataStream("1hour", 1, Context.Frequency.HOUR);
