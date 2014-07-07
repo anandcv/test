@@ -72,10 +72,10 @@ public class Ema extends Strategy {
                 {
                     log("openpositions: "+getPosition(symbol));
 
-                    if(getPosition(symbol) > 0){
-                        closeAllPositions(symbol);
+                    // if(getPosition(symbol) > 0){
+                    //     closeAllPositions(symbol);
 
-                    }
+                    // }
                     log("ID: "+order(OrderType.Market,symbol,100));
 
 
@@ -85,11 +85,11 @@ public class Ema extends Strategy {
                 if(ma3<ma5 && lma3>= lma5)
                 {
 
-                    log("openpositions: "+getPosition(symbol));
-                    if(getPosition(symbol) > 0){
+                    // log("openpositions: "+getPosition(symbol));
+                    // if(getPosition(symbol) > 0){
 
-                        closeAllPositions(symbol);
-                    }
+                    //     closeAllPositions(symbol);
+                    // }
 
                     log("ID: "+order(OrderType.Market,symbol, -100));
 
