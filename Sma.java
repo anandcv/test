@@ -36,8 +36,8 @@ public class Sma extends Strategy {
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
 
-            context.setStartDate("01-01-2012");
-            context.setEndDate("05-01-2012");
+            context.setStartDate("01-01-2013");
+            context.setEndDate("05-01-2013");
 
         }
 
