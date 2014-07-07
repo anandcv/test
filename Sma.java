@@ -53,6 +53,7 @@ public class Sma extends Strategy {
         public void onEvent(Object object)
 
         {
+             if(object instanceof Bar){
             lsma10 = sma10;
             lsma20 = sma20;
 
@@ -81,8 +82,9 @@ public class Sma extends Strategy {
 
                 }
             }
+         }
 
-        }
+    }
 
 
 }
