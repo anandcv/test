@@ -4,7 +4,7 @@ import com.breezetrader.Context;
 import com.breezetrader.Event;
 import com.breezetrader.OrderType;
 import com.breezetrader.Strategy;
-import com.breezetrader.Tick;
+import com.breezetrader.Bar;
 /*
 *  This is a sample strategy intended to get you started.
 *  For more details on the APIs and usage please visit 
