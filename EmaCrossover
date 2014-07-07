@@ -16,7 +16,7 @@ public class EmaCrossover extends Strategy {
 
         boolean flag = false;
 
-        String symbol = "NIFTYBEES";
+        String symbol = "NIFTY-CURRENT";
         double ma3, ma5, lma5, lma3;
         /*
 
@@ -39,8 +39,8 @@ public class EmaCrossover extends Strategy {
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
             
-            context.setStartDate("01-01-2011");
-            context.setEndDate("31-12-2013");
+            context.setStartDate("01-01-2012");
+            context.setEndDate("15-01-2012");
             
             log("Initialized");
 
