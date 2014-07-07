@@ -16,7 +16,7 @@ public class Sma extends Strategy {
 
         boolean flag = false;
 
-        String symbol = "NIFTYBEES";
+        String symbol = "NIFTY-CURRENT";
         double sma10, sma20, lsma10, lsma20;
         /*
 
