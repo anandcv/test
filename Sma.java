@@ -11,7 +11,7 @@ import com.breezetrader.Bar;
 *  http://docs.breezetrader.com
 *
 */
-public class SmaCrossover extends Strategy {
+public class Sma extends Strategy {
 
 
         boolean flag = false;
