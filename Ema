@@ -1,0 +1,103 @@
+import java.math.BigDecimal;
+
+import com.breezetrader.Context;
+import com.breezetrader.Event;
+import com.breezetrader.OrderType;
+import com.breezetrader.Strategy;
+import com.breezetrader.Tick;
+/*
+*  This is a sample strategy intended to get you started.
+*  For more details on the APIs and usage please visit 
+*  http://docs.breezetrader.com
+*
+*/
+public class Ema extends Strategy {
+
+
+        boolean flag = false;
+
+        String symbol = "NIFTY-CURRENT";
+        double ma3, ma5, lma5, lma3;
+        /*
+
+        *  initialize your context,
+        *  technical indicators other variables
+
+        */
+        public void initialize(Context context)
+        {
+            lma3=lma5=ma3=ma5 = 0;
+
+            initTALib("ma", "ma3", "3","Ema", symbol, "close" );
+            initTALib("ma", "ma5", "5","Ema", symbol, "close" );
+            initTALib("lookback", "lma5", "ma5", "5");
+            initTALib("lookback", "lma3", "ma3", "3");
+            context.setDataFrequency(1, Context.Frequency.DAY);
+            context.setSymbols(symbol);
+            //context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
+            
+            context.setPortfolioValue(BigDecimal.valueOf(150000));
+            context.setDataType(Event.Type.BAR);
+            
+            context.setStartDate("01-01-2012");
+            context.setEndDate("15-01-2012");
+            
+            log("Initialized");
+
+        }
+
+
+        /*
+        *  onEvent is the callback when a market event happens.
+
+        *  The behaviour of how this is called depends on the context
+        *  object you intialized in intialize(Context context)
+
+        */
+
+        public void onEvent(Object object)
+
+        {
+                lma5= getData("lma5");
+                lma3= getData("lma3");
+
+                ma3 = getData("ma3");
+                ma5 = getData("ma5");
+
+
+
+
+
+                if(ma3>ma5 && lma3<= lma5)
+                {
+                    log("openpositions: "+getPosition(symbol));
+
+                    if(getPosition(symbol) > 0){
+                        closeAllPositions(symbol);
+
+                    }
+                    log("ID: "+order(OrderType.Market,symbol,100));
+
+
+                        
+
+                }
+                if(ma3<ma5 && lma3>= lma5)
+                {
+
+                    log("openpositions: "+getPosition(symbol));
+                    if(getPosition(symbol) > 0){
+
+                        closeAllPositions(symbol);
+                    }
+
+                    log("ID: "+order(OrderType.Market,symbol, -100));
+
+                }
+
+
+        }
+
+
+}
+	
