@@ -70,7 +70,7 @@ public class Ema extends Strategy {
 
                 if(ma3>ma5 && lma3<= lma5)
                 {
-                    log("openpositions: "+getPosition(symbol));
+                    //log("openpositions: "+getPosition(symbol));
 
                     // if(getPosition(symbol) > 0){
                     //     closeAllPositions(symbol);
