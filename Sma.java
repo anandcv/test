@@ -27,8 +27,8 @@ public class Sma extends Strategy {
         public void initialize(Context context)
         {
 
-            initTALib("ma", "sma10", "10","Sma", symbol, "close" );
-            initTALib("ma", "sma20", "20","Sma", symbol, "close" );
+            initTALib("ma", "sma10", "5","Sma", symbol, "close" );
+            initTALib("ma", "sma20", "10","Sma", symbol, "close" );
             
             context.setDataFrequency(1, Context.Frequency.DAY);
             context.setSymbols(symbol);
