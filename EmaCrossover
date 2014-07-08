@@ -4,14 +4,14 @@ import com.breezetrader.Context;
 import com.breezetrader.Event;
 import com.breezetrader.OrderType;
 import com.breezetrader.Strategy;
-import com.breezetrader.Tick;
+import com.breezetrader.Bar;
 /*
 *  This is a sample strategy intended to get you started.
 *  For more details on the APIs and usage please visit 
 *  http://docs.breezetrader.com
 *
 */
-public class EmaCrossover extends Strategy {
+public class Ema extends Strategy {
 
 
         boolean flag = false;
@@ -39,8 +39,8 @@ public class EmaCrossover extends Strategy {
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
             
-            context.setStartDate("01-01-2012");
-            context.setEndDate("15-01-2012");
+            context.setStartDate("01-01-2013");
+            context.setEndDate("15-01-2013");
             
             log("Initialized");
 
@@ -58,6 +58,7 @@ public class EmaCrossover extends Strategy {
         public void onEvent(Object object)
 
         {
+             if(object instanceof Bar){
                 lma5= getData("lma5");
                 lma3= getData("lma3");
 
@@ -94,7 +95,8 @@ public class EmaCrossover extends Strategy {
                     log("ID: "+order(OrderType.Market,symbol, -100));
 
                 }
-
+                
+             }
 
         }
 
