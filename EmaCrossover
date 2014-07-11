@@ -58,43 +58,41 @@ public class EmaCrossover extends Strategy {
         public void onEvent(Object object)
 
         {
-             if(object instanceof Bar){
-                lma5= getData("lma5");
-                lma3= getData("lma3");
-
-                ma3 = getData("ma3");
-                ma5 = getData("ma5");
-
-
-
-
-
-                if(ma3>ma5 && lma3<= lma5)
-                {
-                    log("openpositions: "+getPosition(symbol));
-
-                    if(getPosition(symbol) > 0){
-                        closeAllPositions(symbol);
-
+             if(object instanceof Bar)
+             {
+                    lma5= getData("lma5");
+                    lma3= getData("lma3");
+    
+                    ma3 = getData("ma3");
+                    ma5 = getData("ma5");
+    
+    
+                    if(ma3>ma5 && lma3<= lma5)
+                    {
+                        log("openpositions: "+getPosition(symbol));
+    
+                        if(getPosition(symbol) > 0){
+                            closeAllPositions(symbol);
+    
+                        }
+                        log("ID: "+order(OrderType.Market,symbol,100));
+    
+    
+                            
+    
                     }
-                    log("ID: "+order(OrderType.Market,symbol,100));
-
-
-                        
-
-                }
-                if(ma3<ma5 && lma3>= lma5)
-                {
-
-                    log("openpositions: "+getPosition(symbol));
-                    if(getPosition(symbol) > 0){
-
-                        closeAllPositions(symbol);
+                    if(ma3<ma5 && lma3>= lma5)
+                    {
+    
+                        log("openpositions: "+getPosition(symbol));
+                        if(getPosition(symbol) > 0){
+    
+                            closeAllPositions(symbol);
+                        }
+    
+                        log("ID: "+order(OrderType.Market,symbol, -100));
+    
                     }
-
-                    log("ID: "+order(OrderType.Market,symbol, -100));
-
-                }
                 
              }
 
