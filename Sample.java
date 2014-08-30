@@ -33,6 +33,7 @@ public class Sample extends Strategy {
  			//context.setDataFrequency(1, Context.Frequency.MINUTE);
 			context.setPortfolioValue(BigDecimal.valueOf(100000));
 			context.setDataType(Event.Type.TICK);
+			context.setDataURL("https://s3-ap-southeast-1.amazonaws.com/breezetrader-test/EU0009652759.csv");
 			//context.createDataStream("1hour", 1, Context.Frequency.HOUR);
 			log("Init impl");
 	}
