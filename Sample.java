@@ -7,7 +7,7 @@ import com.breezetrader.Strategy;
 import com.breezetrader.Tick;
 import com.breezetrader.*;
 
-public class MyStrategy extends Strategy {
+public class Sample extends Strategy {
 	
 	String symbol = "US38259P5089";
 	String isin = "US38259P5089";
