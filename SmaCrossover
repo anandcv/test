@@ -16,7 +16,7 @@ public class SmaCrossover extends Strategy {
 
         boolean flag = false;
 
-        String symbol = "NIFTYBEES";
+        String symbol = "BANKNIFTY-CURRENT";
         double sma10, sma20, lsma10, lsma20;
         /*
 
@@ -37,8 +37,8 @@ public class SmaCrossover extends Strategy {
             context.setPortfolioValue(BigDecimal.valueOf(150000));
             context.setDataType(Event.Type.BAR);
 
-            context.setStartDate("01-01-2012");
-            context.setEndDate("31-01-2012");
+            context.setStartDate("01-09-2012");
+            context.setEndDate("31-10-2012");
 
         }
 
